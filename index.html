@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio of Tholeti Eswar, a web developer building clean frontend and MERN applications."
+      content="Portfolio of Tholeti Durgeswara Rao, a web developer building clean frontend and MERN applications."
     />
-    <title>Tholeti Eswar | Full Stack Dev</title>
+    <title>Tholeti Durgeswara Rao | Full Stack Dev</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +16,35 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+    <!--
+      ╭──────────────────────────────────────────────────────────────╮
+      │  HELLO, SOURCE EXPLORER ✦                                    │
+      │  You found the layer most visitors never open.               │
+      │  Curiosity is a developer superpower.                        │
+      │  Open Console and try: portfolio.matrix()                     │
+      ╰──────────────────────────────────────────────────────────────╯
+    -->  <body>
+    <section class="opening" id="opening" aria-label="Portfolio introduction">
+      <div class="opening-grid" aria-hidden="true"></div>
+      <div class="opening-index" aria-hidden="true">01 / 01</div>
+      <div class="opening-content">
+        <p class="opening-label"><span></span> Portfolio / 2026</p>
+        <h1 class="opening-name" aria-label="Tholeti Durgeswara Rao">
+          <span>Tholeti</span>
+          <span>Eswar</span>
+        </h1>
+        <div class="opening-meta">
+          <p>Full Stack Developer</p>
+          <p>I build thoughtful digital experiences with clean interfaces, practical code, and a sharp eye for the details that make products feel effortless.</p>
+        </div>
+      </div>
+      <button class="opening-enter" id="openingEnter" type="button" aria-label="Enter portfolio">
+        <span>Enter portfolio</span>
+        <span aria-hidden="true">&#8595;</span>
+      </button>
+    </section>
+    <canvas class="cursor-field" id="cursorField" aria-hidden="true"></canvas>
+
     <svg class="icon-sprite" aria-hidden="true">
       <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h5v-6h4v6h5v-9.5"/></symbol>
       <symbol id="icon-folder" viewBox="0 0 24 24"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4H9l2.2 2.5h7.3A2.5 2.5 0 0 1 21 9v8.5a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5Z"/></symbol>
@@ -39,29 +67,40 @@
 
     <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
-    <header class="top-nav" aria-label="Primary navigation">
-      <a class="nav-pill active" href="#home" aria-label="Home" data-section="home">
-        <svg class="icon"><use href="#icon-home"></use></svg>
-        <small>Home</small>
+    <header class="top-nav glass3d" aria-label="Primary navigation">
+      <a class="nav-brand" href="#home" aria-label="Tholeti Durgeswara Rao | Full Stack Developer">
+        <span class="brand-mark" aria-hidden="true">TE</span>
+        <span class="brand-name">Tholeti Durgeswara Rao <span>| Full Stack Developer</span></span>
       </a>
-      <a class="nav-pill" href="#work" aria-label="Work" data-section="work">
-        <svg class="icon"><use href="#icon-folder"></use></svg>
-        <small>Work</small>
-      </a>
-      <a class="nav-pill" href="#tools" aria-label="Tools" data-section="tools">
-        <svg class="icon"><use href="#icon-tool"></use></svg>
-        <small>Tools</small>
-      </a>
-      <a class="nav-pill" href="#contact" aria-label="Contact" data-section="contact">
-        <svg class="icon"><use href="#icon-mail"></use></svg>
-        <small>Contact</small>
-      </a>
+
+      <div class="nav-actions">
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-pill active" href="#home" data-section="home">Home</a>
+          <a class="nav-pill" href="#work" data-section="work">Work</a>
+          <a class="nav-pill" href="#tools" data-section="tools">Tools</a>
+          <a class="nav-pill" href="#contact" data-section="contact">Contact</a>
+        </nav>
+
+        <button id="themeToggle" class="nav-icon" type="button" aria-label="Toggle theme">
+          <svg class="icon"><use href="#icon-moon"></use></svg>
+        </button>
+
+        <button id="menuToggle" class="nav-icon menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="#home" data-section="home"><span>01</span>Home</a>
+        <a href="#work" data-section="work"><span>02</span>Work</a>
+        <a href="#tools" data-section="tools"><span>03</span>Tools</a>
+        <a href="#contact" data-section="contact"><span>04</span>Contact</a>
+      </nav>
     </header>
 
-    <aside class="prefs" aria-label="Display preferences">
-      <button id="themeToggle" class="pref-button icon-only" type="button" aria-label="Toggle theme" data-tooltip="Theme">
-        <svg class="icon"><use href="#icon-moon"></use></svg>
-      </button>
+    <aside class="prefs" aria-label="Accent color preferences">
       <div class="swatches" aria-label="Accent colors">
         <button class="swatch active" type="button" data-color="#8d54ff" data-dark="#4d179a" aria-label="Violet"></button>
         <button class="swatch" type="button" data-color="#14b8a6" data-dark="#0f766e" aria-label="Teal"></button>
@@ -73,11 +112,23 @@
     <main class="layout">
       <section class="profile-panel" id="profile" aria-label="Profile">
         <div class="profile-inner">
-          <div class="avatar" aria-hidden="true">
-            <img src="assets/profile.jpg" alt="" />
+          <div class="profile-glow" aria-hidden="true"></div>
+
+          <div class="profile-meta">
+            <span>Profile / 01</span>
+            <span class="profile-availability"><i></i> Available</span>
           </div>
+
+          <div class="avatar-shell">
+            <div class="avatar-ring" aria-hidden="true"></div>
+            <div class="avatar">
+              <img src="assets/profile.jpg" alt="Tholeti Durgeswara Rao" />
+            </div>
+            <span class="avatar-badge" aria-hidden="true">&lt;/&gt;</span>
+          </div>
+
           <p class="eyebrow">Full Stack Developer</p>
-          <h1>Tholeti Eswar</h1>
+          <h1 class="profile-name">Tholeti Durgeswara Rao</h1>
           <p class="intro">
             I build responsive web experiences and MERN applications with practical UI,
             clean structure, and a focus on real user flows.
@@ -93,15 +144,23 @@
 
           <div class="status-card">
             <span class="dot"></span>
-            <p>Open to internships, web projects, and collaborative builds.</p>
+            <div>
+              <small>Current status</small>
+              <p>Open to internships, web projects, and collaborative builds.</p>
+            </div>
           </div>
-        </div>
+
+          <div class="inspect-hint profile-inspect-hint" tabindex="0" role="note" aria-label="Developer tools easter egg hint">
+            <svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg>
+            <span class="inspect-hint-teaser">Psst... curious?</span>
+            <span class="inspect-hint-reveal">Open Console with <kbd>F12</kbd> and follow the clue.</span>
+          </div>        </div>
       </section>
 
       <div class="content">
         <section class="section hero" id="home">
           <p class="section-kicker">Hello, I am</p>
-          <h2>Tholeti Eswar</h2>
+          <h2>Tholeti Durgeswara Rao</h2>
           <p>
             A developer shaping portfolio sites, placement systems, and frontend products
             that feel fast, readable, and easy to use.
@@ -181,44 +240,153 @@
           </article>
         </section>
 
-        <section class="section" id="tools">
-          <div class="section-head">
-            <p class="section-kicker">Stack</p>
-            <h2>Tools</h2>
-          </div>
-          <div class="tools-grid">
-            <span><svg class="icon"><use href="#icon-code"></use></svg>HTML</span>
-            <span><svg class="icon"><use href="#icon-code"></use></svg>CSS</span>
-            <span><svg class="icon"><use href="#icon-code"></use></svg>JavaScript</span>
-            <span><svg class="icon"><use href="#icon-code"></use></svg>React</span>
-            <span><svg class="icon"><use href="#icon-server"></use></svg>Node.js</span>
-            <span><svg class="icon"><use href="#icon-server"></use></svg>Express</span>
-            <span><svg class="icon"><use href="#icon-database"></use></svg>MongoDB</span>
-            <span><svg class="icon"><use href="#icon-github"></use></svg>GitHub</span>
-            <span><svg class="icon"><use href="#icon-cloud"></use></svg>Vercel</span>
-            <span><svg class="icon"><use href="#icon-cloud"></use></svg>Netlify</span>
+        <section class="skills-showcase" id="tools" aria-labelledby="skillsTitle">
+          <div class="skills-sticky">
+            <div class="skills-ambient" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+
+            <div class="skills-heading">
+              <p class="section-kicker">Stack</p>
+              <h2 id="skillsTitle">Technical Skills</h2>
+              <p>Tools and technologies I use to build modern web experiences.</p>
+            </div>
+
+            <div class="skills-stage">
+              <div class="skills-track">
+                <article class="skill-card" style="--skill-color:#e34f26">
+                  <div class="skill-logo"><span>HTML</span><img src="https://skillicons.dev/icons?i=html" alt="" loading="lazy"></div>
+                  <h3>HTML5</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#1572b6">
+                  <div class="skill-logo"><span>CSS</span><img src="https://skillicons.dev/icons?i=css" alt="" loading="lazy"></div>
+                  <h3>CSS3</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#f7df1e">
+                  <div class="skill-logo"><span>JS</span><img src="https://skillicons.dev/icons?i=js" alt="" loading="lazy"></div>
+                  <h3>JavaScript</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#61dafb">
+                  <div class="skill-logo"><span>RE</span><img src="https://skillicons.dev/icons?i=react" alt="" loading="lazy"></div>
+                  <h3>React</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#5fa04e">
+                  <div class="skill-logo"><span>NO</span><img src="https://skillicons.dev/icons?i=nodejs" alt="" loading="lazy"></div>
+                  <h3>Node.js</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#eeeeee">
+                  <div class="skill-logo"><span>EX</span><img src="https://skillicons.dev/icons?i=express&theme=dark" alt="" loading="lazy"></div>
+                  <h3>Express</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#47a248">
+                  <div class="skill-logo"><span>DB</span><img src="https://skillicons.dev/icons?i=mongodb" alt="" loading="lazy"></div>
+                  <h3>MongoDB</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#f05032">
+                  <div class="skill-logo"><span>GIT</span><img src="https://skillicons.dev/icons?i=git" alt="" loading="lazy"></div>
+                  <h3>Git</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#f5f5f5">
+                  <div class="skill-logo"><span>GH</span><img src="https://skillicons.dev/icons?i=github&theme=dark" alt="" loading="lazy"></div>
+                  <h3>GitHub</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#ffffff">
+                  <div class="skill-logo"><span>V</span><img src="https://skillicons.dev/icons?i=vercel&theme=dark" alt="" loading="lazy"></div>
+                  <h3>Vercel</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#00c7b7">
+                  <div class="skill-logo"><span>NE</span><img src="https://skillicons.dev/icons?i=netlify" alt="" loading="lazy"></div>
+                  <h3>Netlify</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#cb3837">
+                  <div class="skill-logo"><span>NPM</span><img src="https://skillicons.dev/icons?i=npm" alt="" loading="lazy"></div>
+                  <h3>npm</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#007acc">
+                  <div class="skill-logo"><span>VS</span><img src="https://skillicons.dev/icons?i=vscode" alt="" loading="lazy"></div>
+                  <h3>VS Code</h3>
+                </article>
+                <article class="skill-card" style="--skill-color:#ff6c37">
+                  <div class="skill-logo"><span>API</span><img src="https://skillicons.dev/icons?i=postman" alt="" loading="lazy"></div>
+                  <h3>Postman</h3>
+                </article>
+              </div>
+            </div>
+
+            <div class="skills-scroll-cue" aria-hidden="true">
+              <span></span>
+              Scroll to arrange
+            </div>
           </div>
         </section>
 
-        <section class="section contact" id="contact">
-          <div class="section-head">
-            <p class="section-kicker">Connect</p>
-            <h2>Contact</h2>
-          </div>
-          <p>
-            Want to discuss a project, collaboration, or opportunity? These are the best
-            places to reach me.
-          </p>
-          <div class="contact-list">
-            <a class="icon-link" href="https://www.linkedin.com/in/tholeti-eswar57" target="_blank" rel="noreferrer" aria-label="LinkedIn" data-tooltip="LinkedIn"><svg class="icon"><use href="#icon-linkedin"></use></svg></a>
-            <a class="icon-link" href="https://github.com/ESWAR8357" target="_blank" rel="noreferrer" aria-label="GitHub" data-tooltip="GitHub"><svg class="icon"><use href="#icon-github"></use></svg></a>
-            <a class="icon-link" href="https://eswarprofile7.netlify.app" target="_blank" rel="noreferrer" aria-label="Portfolio" data-tooltip="Portfolio"><svg class="icon"><use href="#icon-globe"></use></svg></a>
-            <a class="icon-link" href="https://www.instagram.com/eswar_eternal" target="_blank" rel="noreferrer" aria-label="Instagram" data-tooltip="@eswar_eternal"><svg class="icon"><use href="#icon-instagram"></use></svg></a>
-            <a class="icon-link" href="assets/Tholeti_Eswar_Resume.pdf" target="_blank" rel="noreferrer" aria-label="Resume" data-tooltip="Resume"><svg class="icon"><use href="#icon-file"></use></svg></a>
-            <span class="discord-link"><svg class="icon"><use href="#icon-discord"></use></svg><span>tdreswar3967</span></span>
-          </div>
-          <div class="resume-note">
-            Passionate Full Stack Developer focused on building modern web applications, solving real-world problems, and continuously learning new technologies.
+        <section class="contact-showcase" id="contact" aria-labelledby="contactTitle">
+          <div class="contact-sticky">
+            <div class="contact-word" aria-hidden="true">CONNECT</div>
+            <div class="contact-ambient" aria-hidden="true"><span></span><span></span></div>
+
+            <div class="contact-heading">
+              <p class="section-kicker">Connect</p>
+              <h2 id="contactTitle">Let&apos;s build something thoughtful.</h2>
+              <p>
+                Have a project, opportunity, or idea worth exploring? Pick the channel
+                that works for you and let&apos;s start a conversation.
+              </p>
+              <div class="contact-actions">
+                <a class="contact-primary" href="https://www.linkedin.com/in/tholeti-eswar57" target="_blank" rel="noreferrer">
+                  <span>Start a conversation</span>
+                  <svg class="icon"><use href="#icon-external"></use></svg>
+                </a>
+                <a class="contact-secondary" href="assets/Tholeti_Eswar_Resume.pdf" target="_blank" rel="noreferrer">
+                  <svg class="icon"><use href="#icon-file"></use></svg>
+                  <span>View resume</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-cards">
+              <a class="contact-card" href="https://www.linkedin.com/in/tholeti-eswar57" target="_blank" rel="noreferrer" style="--card-accent:#0a66c2">
+                <span class="contact-card-index">01</span>
+                <svg class="icon"><use href="#icon-linkedin"></use></svg>
+                <div><small>Professional</small><h3>LinkedIn</h3></div>
+                <span class="contact-arrow">&#8599;</span>
+              </a>
+
+              <a class="contact-card" href="https://github.com/ESWAR8357" target="_blank" rel="noreferrer" style="--card-accent:#8d54ff">
+                <span class="contact-card-index">02</span>
+                <svg class="icon"><use href="#icon-github"></use></svg>
+                <div><small>Code &amp; projects</small><h3>GitHub</h3></div>
+                <span class="contact-arrow">&#8599;</span>
+              </a>
+
+              <a class="contact-card" href="https://eswarprofile7.netlify.app" target="_blank" rel="noreferrer" style="--card-accent:#14b8a6">
+                <span class="contact-card-index">03</span>
+                <svg class="icon"><use href="#icon-globe"></use></svg>
+                <div><small>Previous work</small><h3>Portfolio</h3></div>
+                <span class="contact-arrow">&#8599;</span>
+              </a>
+
+              <a class="contact-card" href="https://www.instagram.com/eswar_eternal" target="_blank" rel="noreferrer" style="--card-accent:#e1306c">
+                <span class="contact-card-index">04</span>
+                <svg class="icon"><use href="#icon-instagram"></use></svg>
+                <div><small>Social</small><h3>Instagram</h3></div>
+                <span class="contact-arrow">&#8599;</span>
+              </a>
+
+              <div class="contact-card contact-card-static" style="--card-accent:#5865f2">
+                <span class="contact-card-index">05</span>
+                <svg class="icon"><use href="#icon-discord"></use></svg>
+                <div><small>Discord</small><h3>tdreswar3967</h3></div>
+                <span class="contact-status"><i></i> Available</span>
+              </div>
+
+              <a class="contact-card" href="assets/Tholeti_Eswar_Resume.pdf" target="_blank" rel="noreferrer" style="--card-accent:#f97316">
+                <span class="contact-card-index">06</span>
+                <svg class="icon"><use href="#icon-file"></use></svg>
+                <div><small>Experience</small><h3>Resume</h3></div>
+                <span class="contact-arrow">&#8599;</span>
+              </a>
+            </div>
           </div>
         </section>
       </div>
@@ -229,7 +397,12 @@
     </button>
 
     <footer>
-      <p>Built for <a href="https://github.com/ESWAR8357" target="_blank" rel="noreferrer">Tholeti Eswar</a> with frontend tech.</p>
+      <p>Built for <a href="https://github.com/ESWAR8357" target="_blank" rel="noreferrer">Tholeti Durgeswara Rao</a> with frontend tech.</p>
+      <div class="inspect-hint" tabindex="0" role="note" aria-label="Developer tools easter egg hint">
+        <svg class="icon" aria-hidden="true"><use href="#icon-code"></use></svg>
+        <span class="inspect-hint-teaser">Psst... curious?</span>
+        <span class="inspect-hint-reveal">Open Console with <kbd>F12</kbd> and follow the clue.</span>
+      </div>
     </footer>
 
     <script src="script.js"></script>
