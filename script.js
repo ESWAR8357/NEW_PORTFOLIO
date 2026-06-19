@@ -41,6 +41,7 @@ document.querySelectorAll(".swatch").forEach((button) => {
     button.classList.add("active");
     root.style.setProperty("--primary", button.dataset.color);
     root.style.setProperty("--secondary", button.dataset.dark);
+    root.style.setProperty("--accent-gradient", button.dataset.gradient || "linear-gradient(135deg, " + button.dataset.color + ", " + button.dataset.dark + ")");
   });
 });
 
@@ -120,7 +121,7 @@ if (cursorField) {
   let dpr = 1;
 
   function buildSphere() {
-    const count = coarsePointer.matches ? 64 : Math.min(170, Math.max(105, Math.floor(width / 9)));
+    const count = coarsePointer.matches ? 42 : Math.min(100, Math.max(72, Math.floor(width / 16)));
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 
     points = Array.from({ length: count }, (_, index) => {
@@ -144,7 +145,7 @@ if (cursorField) {
         }))
         .filter((item) => item.index !== index)
         .sort((a, b) => a.distance - b.distance)
-        .slice(0, 2);
+        .slice(0, 1);
 
       nearest.forEach((item) => {
         if (index < item.index) connections.push([index, item.index]);
@@ -155,7 +156,7 @@ if (cursorField) {
   function resizeCursorField() {
     width = innerWidth;
     height = innerHeight;
-    dpr = Math.min(devicePixelRatio || 1, 1.5);
+    dpr = Math.min(devicePixelRatio || 1, 1.25);
     cursorField.width = Math.round(width * dpr);
     cursorField.height = Math.round(height * dpr);
     cursorField.style.width = width + "px";
@@ -166,6 +167,7 @@ if (cursorField) {
   }
 
   function updatePointer(event) {
+    if (!body.classList.contains("bg-mode-particles")) return;
     pointer.targetX = (event.clientX / width - 0.5) * 0.7;
     pointer.targetY = (event.clientY / height - 0.5) * 0.55;
     pointer.targetGlowX = event.clientX;
@@ -244,9 +246,15 @@ if (cursorField) {
       context.beginPath();
       context.arc(point.x, point.y, size, 0, Math.PI * 2);
       context.fillStyle = "rgba(" + point.color + "," + alpha + ")";
-      context.shadowColor = "rgba(" + point.color + ",0.65)";
-      context.shadowBlur = normalizedDepth * 10;
+      context.shadowBlur = 0;
       context.fill();
+
+      if (normalizedDepth > 0.78) {
+        context.beginPath();
+        context.arc(point.x, point.y, size * 2.2, 0, Math.PI * 2);
+        context.fillStyle = "rgba(" + point.color + ",0.07)";
+        context.fill();
+      }
     });
 
     context.shadowBlur = 0;
@@ -492,3 +500,50 @@ Object.defineProperty(window, "portfolio", {
     secret: launchInspectSurprise,
   }),
 });
+const skillsSticky = document.querySelector(".skills-sticky");
+const skillsPointerGlow = document.querySelector(".skills-pointer-glow");
+
+if (skillsSticky && skillsPointerGlow && !matchMedia("(pointer: coarse)").matches) {
+  let skillsPointerFrame = 0;
+  let skillsPointerX = 0;
+  let skillsPointerY = 0;
+
+  skillsSticky.addEventListener("pointermove", (event) => {
+    const bounds = skillsSticky.getBoundingClientRect();
+    skillsPointerX = event.clientX - bounds.left;
+    skillsPointerY = event.clientY - bounds.top;
+    if (skillsPointerFrame) return;
+    skillsPointerFrame = requestAnimationFrame(() => {
+      skillsPointerGlow.style.setProperty("--pointer-x", skillsPointerX + "px");
+      skillsPointerGlow.style.setProperty("--pointer-y", skillsPointerY + "px");
+      skillsSticky.classList.add("is-pointer-active");
+      skillsPointerFrame = 0;
+    });
+  }, { passive: true });
+
+  skillsSticky.addEventListener("pointerleave", () => {
+    skillsSticky.classList.remove("is-pointer-active");
+  });
+}
+const backgroundModeButtons = [...document.querySelectorAll("[data-bg-mode]")];
+const backgroundModes = ["particles", "silk", "rays", "minimal"];
+
+function setBackgroundMode(mode, persist = true) {
+  const safeMode = backgroundModes.includes(mode) ? mode : "particles";
+  backgroundModes.forEach((item) => body.classList.remove("bg-mode-" + item));
+  body.classList.add("bg-mode-" + safeMode);
+
+  backgroundModeButtons.forEach((button) => {
+    const active = button.dataset.bgMode === safeMode;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  if (persist) localStorage.setItem("background-mode", safeMode);
+}
+
+backgroundModeButtons.forEach((button) => {
+  button.addEventListener("click", () => setBackgroundMode(button.dataset.bgMode));
+});
+
+setBackgroundMode(localStorage.getItem("background-mode") || "particles", false);

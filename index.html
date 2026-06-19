@@ -23,7 +23,7 @@
       │  Curiosity is a developer superpower.                        │
       │  Open Console and try: portfolio.matrix()                     │
       ╰──────────────────────────────────────────────────────────────╯
-    -->  <body>
+    -->  <body class="bg-mode-particles">
     <section class="opening" id="opening" aria-label="Portfolio introduction">
       <div class="opening-grid" aria-hidden="true"></div>
       <div class="opening-index" aria-hidden="true">01 / 01</div>
@@ -43,6 +43,7 @@
         <span aria-hidden="true">&#8595;</span>
       </button>
     </section>
+    <div class="theme-background" aria-hidden="true"></div>
     <canvas class="cursor-field" id="cursorField" aria-hidden="true"></canvas>
 
     <svg class="icon-sprite" aria-hidden="true">
@@ -101,13 +102,23 @@
     </header>
 
     <aside class="prefs" aria-label="Accent color preferences">
-      <div class="swatches" aria-label="Accent colors">
-        <button class="swatch active" type="button" data-color="#8d54ff" data-dark="#4d179a" aria-label="Violet"></button>
-        <button class="swatch" type="button" data-color="#14b8a6" data-dark="#0f766e" aria-label="Teal"></button>
-        <button class="swatch" type="button" data-color="#f97316" data-dark="#9a3412" aria-label="Orange"></button>
-        <button class="swatch" type="button" data-color="#22c55e" data-dark="#15803d" aria-label="Green"></button>
+      <span class="appearance-title">Appearance</span>
+      <span class="palette-label">Accent gradient</span>
+      <div class="swatches" aria-label="Gradient themes">
+        <button class="swatch active" type="button" data-color="#8d54ff" data-dark="#4d179a" data-gradient="linear-gradient(135deg, #8d54ff, #4d179a)" style="--swatch-gradient:linear-gradient(135deg,#8d54ff,#4d179a)" aria-label="Violet gradient"></button>
+        <button class="swatch" type="button" data-color="#14b8a6" data-dark="#0f766e" data-gradient="linear-gradient(135deg, #2dd4bf, #0f766e)" style="--swatch-gradient:linear-gradient(135deg,#2dd4bf,#0f766e)" aria-label="Teal gradient"></button>
+        <button class="swatch" type="button" data-color="#f97316" data-dark="#c2410c" data-gradient="linear-gradient(135deg, #fb923c, #ea580c)" style="--swatch-gradient:linear-gradient(135deg,#fb923c,#ea580c)" aria-label="Sunset gradient"></button>
+        <button class="swatch" type="button" data-color="#22c55e" data-dark="#15803d" data-gradient="linear-gradient(135deg, #4ade80, #15803d)" style="--swatch-gradient:linear-gradient(135deg,#4ade80,#15803d)" aria-label="Emerald gradient"></button>
+        <button class="swatch" type="button" data-color="#ec4899" data-dark="#9d174d" data-gradient="linear-gradient(135deg, #f472b6, #9d174d)" style="--swatch-gradient:linear-gradient(135deg,#f472b6,#9d174d)" aria-label="Rose gradient"></button>
+        <button class="swatch" type="button" data-color="#0ea5e9" data-dark="#1d4ed8" data-gradient="linear-gradient(135deg, #38bdf8, #1d4ed8)" style="--swatch-gradient:linear-gradient(135deg,#38bdf8,#1d4ed8)" aria-label="Ocean gradient"></button>
       </div>
-    </aside>
+          <span class="palette-label background-label">Background</span>
+      <div class="background-modes" role="group" aria-label="Background theme">
+        <button class="background-mode active" type="button" data-bg-mode="particles" data-label="Particles" aria-label="Particle background" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="8" r="1.5"/><circle cx="16.5" cy="6.5" r="1"/><circle cx="17" cy="16" r="1.5"/><circle cx="8" cy="17" r="1"/><circle cx="12" cy="12" r="2"/></svg></button>
+        <button class="background-mode" type="button" data-bg-mode="silk" data-label="Silk" aria-label="Silk background" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8c3-3 6 3 9 0s6 3 9 0"/><path d="M3 15c3-3 6 3 9 0s6 3 9 0"/></svg></button>
+        <button class="background-mode" type="button" data-bg-mode="rays" data-label="Light rays" aria-label="Light rays background" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-2 8h4l-2 10"/><path d="m4 6 4 5M20 6l-4 5"/></svg></button>
+        <button class="background-mode" type="button" data-bg-mode="minimal" data-label="Minimal" aria-label="Minimal background" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/></svg></button>
+      </div>    </aside>
 
     <main class="layout">
       <section class="profile-panel" id="profile" aria-label="Profile">
@@ -242,6 +253,7 @@
 
         <section class="skills-showcase" id="tools" aria-labelledby="skillsTitle">
           <div class="skills-sticky">
+            <div class="skills-pointer-glow" aria-hidden="true"></div>
             <div class="skills-ambient" aria-hidden="true">
               <span></span><span></span><span></span>
             </div>
@@ -254,62 +266,69 @@
 
             <div class="skills-stage">
               <div class="skills-track">
-                <article class="skill-card" style="--skill-color:#e34f26">
+                <a class="skill-card" href="https://dev.java/learn/" target="_blank" rel="noreferrer" style="--skill-color:#f89820">
+                  <div class="skill-logo"><span>JAVA</span><img src="https://skillicons.dev/icons?i=java" alt="" loading="lazy"></div>
+                  <h3>Java</h3>
+                </a>
+                <a class="skill-card" href="https://www.kernel.org/" target="_blank" rel="noreferrer" style="--skill-color:#fcc624">
+                  <div class="skill-logo"><span>LINUX</span><img src="https://skillicons.dev/icons?i=linux" alt="" loading="lazy"></div>
+                  <h3>Linux</h3>
+                </a>                <a class="skill-card" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noreferrer" style="--skill-color:#e34f26">
                   <div class="skill-logo"><span>HTML</span><img src="https://skillicons.dev/icons?i=html" alt="" loading="lazy"></div>
                   <h3>HTML5</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#1572b6">
+                </a>
+                <a class="skill-card" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer" style="--skill-color:#1572b6">
                   <div class="skill-logo"><span>CSS</span><img src="https://skillicons.dev/icons?i=css" alt="" loading="lazy"></div>
                   <h3>CSS3</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#f7df1e">
+                </a>
+                <a class="skill-card" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer" style="--skill-color:#f7df1e">
                   <div class="skill-logo"><span>JS</span><img src="https://skillicons.dev/icons?i=js" alt="" loading="lazy"></div>
                   <h3>JavaScript</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#61dafb">
+                </a>
+                <a class="skill-card" href="https://react.dev/" target="_blank" rel="noreferrer" style="--skill-color:#61dafb">
                   <div class="skill-logo"><span>RE</span><img src="https://skillicons.dev/icons?i=react" alt="" loading="lazy"></div>
                   <h3>React</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#5fa04e">
+                </a>
+                <a class="skill-card" href="https://nodejs.org/" target="_blank" rel="noreferrer" style="--skill-color:#5fa04e">
                   <div class="skill-logo"><span>NO</span><img src="https://skillicons.dev/icons?i=nodejs" alt="" loading="lazy"></div>
                   <h3>Node.js</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#eeeeee">
+                </a>
+                <a class="skill-card" href="https://expressjs.com/" target="_blank" rel="noreferrer" style="--skill-color:#eeeeee">
                   <div class="skill-logo"><span>EX</span><img src="https://skillicons.dev/icons?i=express&theme=dark" alt="" loading="lazy"></div>
                   <h3>Express</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#47a248">
+                </a>
+                <a class="skill-card" href="https://www.mongodb.com/docs/" target="_blank" rel="noreferrer" style="--skill-color:#47a248">
                   <div class="skill-logo"><span>DB</span><img src="https://skillicons.dev/icons?i=mongodb" alt="" loading="lazy"></div>
                   <h3>MongoDB</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#f05032">
+                </a>
+                <a class="skill-card" href="https://git-scm.com/doc" target="_blank" rel="noreferrer" style="--skill-color:#f05032">
                   <div class="skill-logo"><span>GIT</span><img src="https://skillicons.dev/icons?i=git" alt="" loading="lazy"></div>
                   <h3>Git</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#f5f5f5">
+                </a>
+                <a class="skill-card" href="https://github.com/" target="_blank" rel="noreferrer" style="--skill-color:#f5f5f5">
                   <div class="skill-logo"><span>GH</span><img src="https://skillicons.dev/icons?i=github&theme=dark" alt="" loading="lazy"></div>
                   <h3>GitHub</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#ffffff">
+                </a>
+                <a class="skill-card" href="https://vercel.com/docs" target="_blank" rel="noreferrer" style="--skill-color:#ffffff">
                   <div class="skill-logo"><span>V</span><img src="https://skillicons.dev/icons?i=vercel&theme=dark" alt="" loading="lazy"></div>
                   <h3>Vercel</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#00c7b7">
+                </a>
+                <a class="skill-card" href="https://docs.netlify.com/" target="_blank" rel="noreferrer" style="--skill-color:#00c7b7">
                   <div class="skill-logo"><span>NE</span><img src="https://skillicons.dev/icons?i=netlify" alt="" loading="lazy"></div>
                   <h3>Netlify</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#cb3837">
+                </a>
+                <a class="skill-card" href="https://docs.npmjs.com/" target="_blank" rel="noreferrer" style="--skill-color:#cb3837">
                   <div class="skill-logo"><span>NPM</span><img src="https://skillicons.dev/icons?i=npm" alt="" loading="lazy"></div>
                   <h3>npm</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#007acc">
+                </a>
+                <a class="skill-card" href="https://code.visualstudio.com/docs" target="_blank" rel="noreferrer" style="--skill-color:#007acc">
                   <div class="skill-logo"><span>VS</span><img src="https://skillicons.dev/icons?i=vscode" alt="" loading="lazy"></div>
                   <h3>VS Code</h3>
-                </article>
-                <article class="skill-card" style="--skill-color:#ff6c37">
+                </a>
+                <a class="skill-card" href="https://learning.postman.com/docs/" target="_blank" rel="noreferrer" style="--skill-color:#ff6c37">
                   <div class="skill-logo"><span>API</span><img src="https://skillicons.dev/icons?i=postman" alt="" loading="lazy"></div>
                   <h3>Postman</h3>
-                </article>
+                </a>
               </div>
             </div>
 
