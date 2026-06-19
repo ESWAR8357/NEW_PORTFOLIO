@@ -3992,3 +3992,43 @@ body {
     padding-inline: 11px;
   }
 }
+/* Keep interactive background effects visible through the page */
+.section,
+.contact-showcase,
+.skills-showcase {
+  background-color: transparent;
+}
+
+@media (min-width: 1025px) {
+  body.bg-mode-particles .layout,
+  body.bg-mode-particles .profile-panel,
+  body.bg-mode-particles .content {
+    background: color-mix(in srgb, var(--bg) 60%, transparent);
+  }
+
+  body.bg-mode-silk .layout,
+  body.bg-mode-silk .profile-panel,
+  body.bg-mode-silk .content {
+    background: color-mix(in srgb, var(--bg) 48%, transparent);
+  }
+
+  body.bg-mode-rays .layout,
+  body.bg-mode-rays .profile-panel,
+  body.bg-mode-rays .content {
+    background: color-mix(in srgb, var(--bg) 52%, transparent);
+  }
+
+  body.bg-mode-minimal .layout,
+  body.bg-mode-minimal .profile-panel,
+  body.bg-mode-minimal .content {
+    background: var(--bg);
+  }
+}
+
+body.bg-mode-particles .cursor-field {
+  opacity: .92;
+}
+
+body.dark.bg-mode-particles .cursor-field {
+  opacity: 1;
+}
