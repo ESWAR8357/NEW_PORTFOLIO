@@ -547,3 +547,29 @@ backgroundModeButtons.forEach((button) => {
 });
 
 setBackgroundMode(localStorage.getItem("background-mode") || "particles", false);
+
+const themePanel = document.getElementById("themePanel");
+const themeLauncher = document.getElementById("themeLauncher");
+
+function setThemePanelOpen(open) {
+  if (!themePanel || !themeLauncher) return;
+  themePanel.classList.toggle("is-open", open);
+  themeLauncher.setAttribute("aria-expanded", String(open));
+  themeLauncher.setAttribute("aria-label", open ? "Close appearance themes" : "Open appearance themes");
+}
+
+themeLauncher?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  setThemePanelOpen(!themePanel.classList.contains("is-open"));
+});
+
+document.addEventListener("click", (event) => {
+  if (themePanel && !themePanel.contains(event.target)) setThemePanelOpen(false);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    setThemePanelOpen(false);
+    themeLauncher?.focus();
+  }
+});
