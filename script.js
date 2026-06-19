@@ -546,6 +546,11 @@ backgroundModeButtons.forEach((button) => {
   button.addEventListener("click", () => setBackgroundMode(button.dataset.bgMode));
 });
 
+const backgroundPreferenceVersion = "effects-v2";
+if (localStorage.getItem("background-mode-version") !== backgroundPreferenceVersion) {
+  localStorage.setItem("background-mode", "particles");
+  localStorage.setItem("background-mode-version", backgroundPreferenceVersion);
+}
 setBackgroundMode(localStorage.getItem("background-mode") || "particles", false);
 
 const themePanel = document.getElementById("themePanel");
