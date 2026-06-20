@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tholeti-eswar.vercel.app/sitemap.xmlx
+Sitemap: https://tholeti-eswar.vercel.app/sitemap.xml
