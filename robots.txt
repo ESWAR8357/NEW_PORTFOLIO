@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tholeti-eswar.vercel.app/sitemap.xmlx
