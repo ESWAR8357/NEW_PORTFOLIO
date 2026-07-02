@@ -6,23 +6,102 @@ const navLinks = [...document.querySelectorAll(".nav-pill")];
 const sections = [...document.querySelectorAll("section[id]")];
 const opening = document.getElementById("opening");
 const openingEnter = document.getElementById("openingEnter");
+const decryptChallenge = document.getElementById("decryptChallenge");
+const challengePrompt = document.getElementById("challengePrompt");
+const challengeOptions = document.getElementById("challengeOptions");
+const challengeFeedback = document.getElementById("challengeFeedback");
+let challengeAnswer = null;
+let challengeStarted = false;
 
 body.classList.add("opening-active");
+body.classList.remove("portfolio-ready");
 
 function enterPortfolio() {
   if (!opening || opening.classList.contains("is-leaving")) return;
+  scrollTo({ top: 0, left: 0, behavior: "instant" });
   opening.classList.add("is-leaving");
   setTimeout(() => {
     opening.classList.add("is-hidden");
     body.classList.remove("opening-active");
-  }, 240);
+    body.classList.add("portfolio-ready");
+    document.dispatchEvent(new Event("portfolio:ready"));
+    scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, 620);
 }
 
-openingEnter?.addEventListener("click", enterPortfolio);
-opening?.addEventListener("wheel", enterPortfolio, { passive: true, once: true });
-opening?.addEventListener("touchmove", enterPortfolio, { passive: true, once: true });
+function shuffleItems(items) {
+  return items
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+function buildDecryptChallenge() {
+  const first = Math.floor(Math.random() * 7) + 4;
+  const second = Math.floor(Math.random() * 6) + 3;
+  challengeAnswer = first + second;
+  const options = shuffleItems([
+    challengeAnswer,
+    challengeAnswer + Math.floor(Math.random() * 3) + 1,
+    challengeAnswer - Math.floor(Math.random() * 3) - 1,
+  ]);
+
+  challengePrompt.textContent = `Decrypt key: ${first} + ${second} = ?`;
+  challengeFeedback.textContent = "Choose the correct key.";
+  challengeOptions.innerHTML = "";
+  options.forEach((option) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "challenge-option";
+    button.textContent = String(option).padStart(2, "0");
+    button.addEventListener("click", () => {
+      if (option === challengeAnswer) {
+        challengeFeedback.textContent = "Key accepted. Unlocking portfolio...";
+        decryptChallenge.classList.remove("is-wrong");
+        decryptChallenge.classList.add("is-solved");
+        setTimeout(enterPortfolio, 180);
+        return;
+      }
+
+      challengeFeedback.textContent = "Wrong key. Try another one.";
+      decryptChallenge.classList.add("is-wrong");
+      button.classList.add("is-wrong");
+      setTimeout(() => {
+        decryptChallenge.classList.remove("is-wrong");
+        button.classList.remove("is-wrong");
+      }, 420);
+    });
+    challengeOptions.append(button);
+  });
+}
+
+function showDecryptChallenge() {
+  if (!opening || opening.classList.contains("is-leaving")) return;
+  if (!challengeStarted) {
+    buildDecryptChallenge();
+    challengeStarted = true;
+  }
+  decryptChallenge.hidden = false;
+  opening.classList.add("challenge-active");
+  openingEnter.setAttribute("aria-expanded", "true");
+  challengeOptions.querySelector("button")?.focus({ preventScroll: true });
+}
+
+openingEnter?.addEventListener("click", showDecryptChallenge);
+opening?.addEventListener("wheel", (event) => {
+  event.preventDefault();
+  showDecryptChallenge();
+}, { passive: false, once: true });
+opening?.addEventListener("touchmove", (event) => {
+  event.preventDefault();
+  showDecryptChallenge();
+}, { passive: false, once: true });
 opening?.addEventListener("keydown", (event) => {
-  if (["Enter", " ", "ArrowDown", "PageDown"].includes(event.key)) enterPortfolio();
+  if (event.target.closest(".opening-challenge")) return;
+  if (["Enter", " ", "ArrowDown", "PageDown"].includes(event.key)) {
+    event.preventDefault();
+    showDecryptChallenge();
+  }
 });
 
 const savedTheme = localStorage.getItem("theme");
@@ -121,9 +200,10 @@ if (cursorField) {
   let width = 0;
   let height = 0;
   let dpr = 1;
+  let cursorReady = false;
 
   function buildSphere() {
-    const count = coarsePointer.matches ? 42 : Math.min(100, Math.max(72, Math.floor(width / 16)));
+    const count = coarsePointer.matches ? 34 : Math.min(72, Math.max(48, Math.floor(width / 22)));
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
 
     points = Array.from({ length: count }, (_, index) => {
@@ -166,6 +246,18 @@ if (cursorField) {
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
     buildSphere();
     drawCursorField();
+  }
+
+  function initCursorField() {
+    if (cursorReady) return;
+    cursorReady = true;
+    resizeCursorField();
+
+    if (!coarsePointer.matches && !reducedMotion.matches) {
+      addEventListener("pointermove", updatePointer, { passive: true });
+    }
+
+    addEventListener("resize", resizeCursorField, { passive: true });
   }
 
   function updatePointer(event) {
@@ -288,19 +380,17 @@ if (cursorField) {
     frameId = requestAnimationFrame(animateToPointer);
   }
 
-  resizeCursorField();
-
-  if (!coarsePointer.matches && !reducedMotion.matches) {
-    addEventListener("pointermove", updatePointer, { passive: true });
+  if (body.classList.contains("portfolio-ready")) {
+    initCursorField();
+  } else {
+    document.addEventListener("portfolio:ready", initCursorField, { once: true });
   }
-
-  addEventListener("resize", resizeCursorField, { passive: true });
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       cancelAnimationFrame(frameId);
       frameId = 0;
-    } else {
+    } else if (cursorReady) {
       drawCursorField();
     }
   });
@@ -308,7 +398,7 @@ if (cursorField) {
   reducedMotion.addEventListener?.("change", () => {
     cancelAnimationFrame(frameId);
     frameId = 0;
-    drawCursorField();
+    if (cursorReady) drawCursorField();
   });
 }
 const skillsShowcase = document.querySelector(".skills-showcase");

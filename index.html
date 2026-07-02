@@ -28,8 +28,10 @@
     -->  <body class="bg-mode-particles dark">
     <section class="opening" id="opening" aria-label="Portfolio introduction">
       <div class="opening-grid" aria-hidden="true"></div>
-      <div class="opening-index" aria-hidden="true">01 / 01</div>
+      <div class="opening-stage-line" aria-hidden="true"></div>
+      <div class="opening-index" aria-hidden="true">Portfolio / 2026</div>
       <div class="opening-content">
+        <p class="opening-pretitle">Developer portfolio</p>
         <p class="opening-label"><span></span> Portfolio / 2026</p>
         <h1 class="opening-name" aria-label="Tholeti Durgeswara Rao">
           <span>Tholeti</span>
@@ -41,9 +43,19 @@
         </div>
       </div>
       <button class="opening-enter" id="openingEnter" type="button" aria-label="Enter portfolio">
-        <span>Enter portfolio</span>
-        <span aria-hidden="true">&#8595;</span>
+        <span>decrypt portfolio</span>
+        <span aria-hidden="true">&#9166;</span>
       </button>
+      <div class="opening-challenge" id="decryptChallenge" aria-live="polite" hidden>
+        <p class="challenge-eyebrow">Random decrypt challenge</p>
+        <p class="challenge-prompt" id="challengePrompt">Solve the key to enter</p>
+        <div class="challenge-options" id="challengeOptions" aria-label="Decrypt answer options"></div>
+        <p class="challenge-feedback" id="challengeFeedback">Choose the correct key.</p>
+      </div>
+      <div class="opening-decrypt" aria-hidden="true">
+        <span>decrypting access</span>
+        <i></i><i></i><i></i>
+      </div>
     </section>
     <div class="theme-background" aria-hidden="true"></div>
     <canvas class="cursor-field" id="cursorField" aria-hidden="true"></canvas>
@@ -215,10 +227,11 @@
                 <p class="education-period">2022 - 2026</p>
                 <h3>Bachelor of Technology in Computer Science Engineering</h3>
                 <p>Bonam Venkata Chalamayya Engineering College, Odalarevu</p>
-                <div class="education-score magic-score" aria-label="B.Tech CGPA 8.08">
+                <button class="education-score magic-score" type="button" aria-label="View B.Tech CGPA 8.08">
                   <span class="score-label">CGPA</span>
+                  <span class="score-teaser">View</span>
                   <span class="score-value">8.08</span>
-                </div>
+                </button>
               </div>
             </article>
 
@@ -228,10 +241,11 @@
                 <p class="education-period">2021 - 2022</p>
                 <h3>Intermediate</h3>
                 <p>SASI Junior College, Palakollu</p>
-                <div class="education-score magic-score" aria-label="Intermediate percentage 78%">
-                  <span class="score-label">Percentage</span>
+                <button class="education-score magic-score score-percent" type="button" aria-label="View Intermediate percentage 78%">
+                  <span class="score-label">Percent</span>
+                  <span class="score-teaser">View</span>
                   <span class="score-value">78%</span>
-                </div>
+                </button>
               </div>
             </article>
 
@@ -241,10 +255,11 @@
                 <p class="education-period">2019 - 2020</p>
                 <h3>Secondary Education</h3>
                 <p>ZPHS School, Battelanka</p>
-                <div class="education-score magic-score" aria-label="Secondary Education CGPA 9.7">
+                <button class="education-score magic-score" type="button" aria-label="View Secondary Education CGPA 9.7">
                   <span class="score-label">CGPA</span>
+                  <span class="score-teaser">View</span>
                   <span class="score-value">9.7</span>
-                </div>
+                </button>
               </div>
             </article>
           </div>
