@@ -786,12 +786,15 @@ h1 {
 .primary-action,
 .secondary-action,
 .project-links a {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 12px 18px;
   border: 1px solid var(--primary);
   font-weight: 800;
+  overflow: hidden;
 }
 
 .primary-action,
@@ -813,8 +816,265 @@ h1 {
   transform: translateY(-2px);
 }
 
+.project-links a {
+  min-height: 42px;
+  border-color: color-mix(in srgb, var(--primary) 48%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, transparent), color-mix(in srgb, var(--secondary) 7%, transparent));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--primary) 0%, transparent);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+}
+
+.project-links a::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--score-angle, 0deg), transparent, color-mix(in srgb, var(--primary) 70%, white 30%), transparent 38%);
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  animation: scoreOrbit 2.4s linear infinite;
+}
+
+.project-links a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(110deg, transparent 8%, rgba(255, 255, 255, 0.62) 34%, transparent 58%);
+  opacity: 0;
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.project-links a .icon,
+.project-links a span {
+  position: relative;
+  z-index: 1;
+}
+
+.project-links a:hover,
+.project-links a:focus-visible {
+  border-color: color-mix(in srgb, var(--primary) 70%, white 30%);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 62%, #111111 38%), color-mix(in srgb, var(--secondary) 44%, #050505 56%));
+  box-shadow:
+    0 16px 34px color-mix(in srgb, var(--primary) 28%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--primary) 12%, transparent);
+  transform: translateY(-3px) scale(1.03);
+}
+
+.project-links a:hover::before,
+.project-links a:focus-visible::before {
+  opacity: 0.72;
+}
+
+.project-links a:hover::after,
+.project-links a:focus-visible::after {
+  animation: scoreShine 0.8s ease;
+}
+
 .section-head {
   margin-bottom: 32px;
+}
+
+.education-section {
+  min-height: auto;
+}
+
+.education-timeline {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  max-width: 880px;
+}
+
+.education-timeline::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 28px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), transparent);
+  opacity: 0.45;
+}
+
+.education-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.education-marker {
+  position: relative;
+  z-index: 1;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.education-content {
+  padding: 22px 24px;
+  border-left: 2px solid var(--primary);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+}
+
+.education-period {
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.education-content h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.education-content p:last-of-type {
+  margin-bottom: 14px;
+}
+
+.education-score {
+  --score-glow: color-mix(in srgb, var(--primary) 58%, #ffffff 42%);
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, var(--primary) 42%, transparent);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 11%, var(--panel) 89%), color-mix(in srgb, var(--secondary) 9%, var(--panel) 91%));
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 900;
+  overflow: hidden;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform: translateZ(0);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+@property --score-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.education-score::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--score-glow) 24%, transparent), transparent);
+  opacity: 0.42;
+  transform: translateX(-110%);
+  transition: opacity 0.25s ease;
+  animation: scoreSweep 3.6s ease-in-out infinite;
+}
+
+.education-score::after {
+  content: "";
+  position: absolute;
+  inset: auto 10px 7px 10px;
+  height: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--score-glow), transparent);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.education-score:hover,
+.education-score:focus-within {
+  border-color: var(--score-glow);
+  box-shadow:
+    0 14px 34px color-mix(in srgb, var(--primary) 18%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--primary) 9%, transparent);
+  transform: translateY(-2px);
+}
+
+.score-label {
+  position: relative;
+  z-index: 1;
+  color: color-mix(in srgb, var(--text) 58%, transparent);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.score-value {
+  position: relative;
+  z-index: 1;
+  color: var(--primary);
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+@keyframes scoreOrbit {
+  to {
+    --score-angle: 360deg;
+  }
+}
+
+@keyframes scoreSweep {
+  0%,
+  46% {
+    transform: translateX(-110%);
+  }
+
+  72%,
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+@keyframes scoreShine {
+  0% {
+    opacity: 0;
+    transform: translateX(-125%);
+  }
+
+  25%,
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(125%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-links a::before,
+  .project-links a::after,
+  .education-score,
+  .education-score::before,
+  .education-score::after {
+    animation: none;
+  }
 }
 
 .project-card {
@@ -1018,6 +1278,29 @@ footer a {
 
   .project-card {
     grid-template-columns: 1fr;
+  }
+
+  .education-timeline::before {
+    left: 22px;
+  }
+
+  .education-card {
+    grid-template-columns: 46px 1fr;
+    gap: 14px;
+  }
+
+  .education-marker {
+    width: 46px;
+    height: 46px;
+    font-size: 12px;
+  }
+
+  .education-content {
+    padding: 18px;
+  }
+
+  .education-content h3 {
+    font-size: 20px;
   }
 
   .tools-grid {

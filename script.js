@@ -26,7 +26,9 @@ opening?.addEventListener("keydown", (event) => {
 });
 
 const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark" || (!savedTheme && matchMedia("(prefers-color-scheme: dark)").matches)) {
+if (savedTheme === "light") {
+  body.classList.remove("dark");
+} else {
   body.classList.add("dark");
 }
 
