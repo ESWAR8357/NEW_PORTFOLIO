@@ -575,7 +575,7 @@ Object.defineProperty(window, "portfolio", {
     matrix: launchMatrixSurprise,
     hireMe() {
       console.log(
-        "%cLET’S BUILD SOMETHING MEMORABLE",
+        "%cLET'S BUILD SOMETHING MEMORABLE",
         "color:#fff;background:linear-gradient(90deg,#8d54ff,#14b8a6);padding:12px 16px;border-radius:8px;font:800 16px system-ui"
       );
       console.table({
@@ -670,3 +670,130 @@ document.addEventListener("keydown", (event) => {
     themeLauncher?.focus();
   }
 });
+
+// WhatsApp verification modal
+(function () {
+  var VERIFICATION_CODE = "TDR";
+  var WA_URL = "https://wa.me/919346338357";
+
+  var overlay = document.getElementById("waModalOverlay");
+  var modal = document.getElementById("waModal");
+  var unlockBtn = document.getElementById("unlockWhatsappBtn");
+  var cancelBtn = document.getElementById("waModalCancel");
+  var verifyBtn = document.getElementById("waModalVerify");
+  var codeInput = document.getElementById("waCodeInput");
+  var codeError = document.getElementById("waCodeError");
+  var whatsappCard = document.getElementById("whatsappCard");
+
+  if (!overlay || !unlockBtn || !whatsappCard) return;
+
+  function openModal() {
+    codeInput.value = "";
+    codeError.hidden = true;
+    codeInput.classList.remove("is-error");
+    overlay.hidden = false;
+    requestAnimationFrame(function () { codeInput.focus(); });
+  }
+
+  function closeModal() {
+    overlay.hidden = true;
+    var btn = document.getElementById("unlockWhatsappBtn");
+    if (btn) btn.focus();
+  }
+
+  function unlockWhatsApp() {
+    overlay.hidden = true;
+
+    // Swap icon to WhatsApp
+    var iconUse = whatsappCard.querySelector(".icon use");
+    if (iconUse) iconUse.setAttribute("href", "#icon-whatsapp");
+
+    // Update label
+    var smallEl = whatsappCard.querySelector("small");
+    if (smallEl) smallEl.textContent = "Chat";
+
+    // Hide description and unlock button
+    var desc = whatsappCard.querySelector(".whatsapp-desc");
+    if (desc) desc.hidden = true;
+    unlockBtn.hidden = true;
+
+    // Add "Chat on WhatsApp" sub-label
+    var subLabel = document.createElement("p");
+    subLabel.className = "wa-unlocked-label";
+    subLabel.textContent = "Chat on WhatsApp";
+    var divEl = whatsappCard.querySelector("div");
+    if (divEl) divEl.appendChild(subLabel);
+
+    // Add arrow
+    var arrowEl = document.createElement("span");
+    arrowEl.className = "contact-arrow";
+    arrowEl.setAttribute("aria-hidden", "true");
+    arrowEl.innerHTML = "&#8599;";
+    whatsappCard.appendChild(arrowEl);
+
+    // Make card interactive
+    whatsappCard.classList.add("is-unlocked");
+    whatsappCard.setAttribute("role", "link");
+    whatsappCard.setAttribute("tabindex", "0");
+    whatsappCard.setAttribute("aria-label", "Chat on WhatsApp");
+
+    function goToWhatsApp() {
+      window.open(WA_URL, "_blank", "noopener,noreferrer");
+    }
+
+    whatsappCard.addEventListener("click", goToWhatsApp);
+    whatsappCard.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        goToWhatsApp();
+      }
+    });
+
+    whatsappCard.focus();
+  }
+
+  function handleVerify() {
+    var entered = codeInput.value.trim();
+    if (entered === VERIFICATION_CODE) {
+      unlockWhatsApp();
+    } else {
+      codeInput.classList.add("is-error");
+      codeError.hidden = false;
+      codeInput.focus();
+      setTimeout(function () { codeInput.classList.remove("is-error"); }, 400);
+    }
+  }
+
+  unlockBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    openModal();
+  });
+
+  verifyBtn.addEventListener("click", handleVerify);
+  cancelBtn.addEventListener("click", closeModal);
+
+  codeInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") handleVerify();
+  });
+
+  overlay.addEventListener("click", function (e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !overlay.hidden) closeModal();
+  });
+
+  // Focus trap
+  modal.addEventListener("keydown", function (e) {
+    if (e.key !== "Tab") return;
+    var focusable = Array.prototype.slice.call(modal.querySelectorAll("input, button")).filter(function (el) { return !el.disabled && !el.hidden; });
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+})();

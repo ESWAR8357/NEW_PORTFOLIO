@@ -78,6 +78,9 @@
       <symbol id="icon-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
       <symbol id="icon-cloud" viewBox="0 0 24 24"><path d="M6.5 18h10.8A4 4 0 0 0 18 10a6 6 0 0 0-11.2 2A3 3 0 0 0 6.5 18Z"/></symbol>
       <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+      <symbol id="icon-telegram" viewBox="0 0 24 24"><path d="M21.5 4.5 2.5 11.5l7 2.5m12-9.5-5 14.5-5-5m10-9.5-12 9"/></symbol>
+      <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 8.66 15l1.34 5-5.18-1.34A10 10 0 1 1 12 2Z"/><path d="M8.5 9.5c.5 1 1.5 3 3.5 4.5s3.5 1.5 4.5 1.5"/></symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
     </svg>
 
     <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
@@ -181,6 +184,7 @@
             <a class="icon-link" href="https://github.com/ESWAR8357" target="_blank" rel="noreferrer" aria-label="GitHub" data-tooltip="GitHub"><svg class="icon"><use href="#icon-github"></use></svg></a>
             <a class="icon-link" href="https://eswarprofile7.netlify.app" target="_blank" rel="noreferrer" aria-label="Portfolio" data-tooltip="Portfolio"><svg class="icon"><use href="#icon-globe"></use></svg></a>
             <a class="icon-link" href="https://www.instagram.com/eswar_eternal" target="_blank" rel="noreferrer" aria-label="Instagram" data-tooltip="Instagram"><svg class="icon"><use href="#icon-instagram"></use></svg></a>
+            <a class="icon-link" href="https://t.me/bangaram82" target="_blank" rel="noopener noreferrer" aria-label="Telegram" data-tooltip="Telegram"><svg class="icon"><use href="#icon-telegram"></use></svg></a>
             <a class="icon-link" href="assets/Tholeti_Eswar_Resume.pdf" target="_blank" rel="noreferrer" aria-label="Resume" data-tooltip="Resume"><svg class="icon"><use href="#icon-file"></use></svg></a>
           </div>
 
@@ -410,6 +414,34 @@
                 <a href="assets/certificates/servicenow-virtual-internship.pdf" target="_blank" rel="noreferrer">Open PDF <span aria-hidden="true">&#8599;</span></a>
               </div>
             </article>
+
+            <article class="certificate-card" style="--certificate-accent:#61dafb">
+              <a class="certificate-preview" href="assets/certificates/REACTJS_GFG.pdf" target="_blank" rel="noreferrer" aria-label="Open ReactJS GeeksforGeeks certificate">
+                <img src="assets/certificates/REACTJS_GFG.webp" alt="ReactJS course completion certificate by GeeksforGeeks awarded to Tholeti Durgeswara Rao" loading="lazy" />
+                <span class="certificate-open"><svg class="icon"><use href="#icon-external"></use></svg> View certificate</span>
+              </a>
+              <div class="certificate-body">
+                <div class="certificate-brand"><span>GeeksforGeeks</span><i aria-hidden="true"></i></div>
+                <p class="certificate-code">GFG</p>
+                <h3>ReactJS</h3>
+                <p>ReactJS course completion certificate by GeeksforGeeks.</p>
+                <a href="assets/certificates/REACTJS_GFG.pdf" target="_blank" rel="noreferrer">Open PDF <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </article>
+
+            <article class="certificate-card" style="--certificate-accent:#ff9900">
+              <a class="certificate-preview" href="assets/certificates/AWS Cloud Practitioner.pdf" target="_blank" rel="noreferrer" aria-label="Open AWS Cloud Practitioner certificate">
+                <img src="assets/certificates/AWS Cloud Practitioner.webp" alt="AWS Cloud Practitioner certificate awarded to Tholeti Durgeswara Rao" loading="lazy" />
+                <span class="certificate-open"><svg class="icon"><use href="#icon-external"></use></svg> View certificate</span>
+              </a>
+              <div class="certificate-body">
+                <div class="certificate-brand"><span>Amazon Web Services</span><i aria-hidden="true"></i></div>
+                <p class="certificate-code">AWS</p>
+                <h3>Cloud Practitioner</h3>
+                <p>AWS Cloud Practitioner certification demonstrating foundational cloud knowledge.</p>
+                <a href="assets/certificates/AWS Cloud Practitioner.pdf" target="_blank" rel="noreferrer">Open PDF <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </article>
           </div>
         </section>
         <section class="skills-showcase" id="tools" aria-labelledby="skillsTitle">
@@ -560,8 +592,29 @@
                 <span class="contact-status"><i></i> Available</span>
               </div>
 
-              <a class="contact-card" href="assets/Tholeti_Eswar_Resume.pdf" target="_blank" rel="noreferrer" style="--card-accent:#f97316">
+              <a class="contact-card" href="https://t.me/bangaram82" target="_blank" rel="noopener noreferrer" style="--card-accent:#229ed9">
                 <span class="contact-card-index">06</span>
+                <svg class="icon"><use href="#icon-telegram"></use></svg>
+                <div><small>Messaging</small><h3>Telegram</h3></div>
+                <span class="contact-arrow">&#8599;</span>
+              </a>
+
+              <div class="contact-card contact-card-whatsapp" id="whatsappCard" style="--card-accent:#25d366">
+                <span class="contact-card-index">07</span>
+                <svg class="icon"><use href="#icon-lock"></use></svg>
+                <div>
+                  <small>Protected</small>
+                  <h3>WhatsApp</h3>
+                  <p class="whatsapp-desc">To reduce spam messages, verify yourself to unlock my WhatsApp contact.</p>
+                </div>
+                <button class="unlock-btn" id="unlockWhatsappBtn" type="button" aria-label="Unlock WhatsApp contact">
+                  <svg class="icon"><use href="#icon-lock"></use></svg>
+                  Unlock WhatsApp
+                </button>
+              </div>
+
+              <a class="contact-card" href="assets/Tholeti_Eswar_Resume.pdf" target="_blank" rel="noreferrer" style="--card-accent:#f97316">
+                <span class="contact-card-index">08</span>
                 <svg class="icon"><use href="#icon-file"></use></svg>
                 <div><small>Experience</small><h3>Resume</h3></div>
                 <span class="contact-arrow">&#8599;</span>
@@ -584,6 +637,21 @@
         <span class="inspect-hint-reveal">Open Console with <kbd>F12</kbd> and follow the clue.</span>
       </div>
     </footer>
+
+    <!-- WhatsApp Verification Modal -->
+    <div class="wa-modal-overlay" id="waModalOverlay" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" hidden>
+      <div class="wa-modal" id="waModal">
+        <h2 class="wa-modal-title" id="waModalTitle">Verify to Continue</h2>
+        <p class="wa-modal-desc">This verification helps reduce spam and automated messages.<br>Enter the verification code below to unlock my WhatsApp contact.</p>
+        <label class="wa-modal-label" for="waCodeInput">Verification Code</label>
+        <input class="wa-modal-input" id="waCodeInput" type="text" placeholder="Enter verification code" autocomplete="off" aria-describedby="waCodeError" />
+        <p class="wa-modal-error" id="waCodeError" aria-live="polite" hidden>Incorrect verification code.</p>
+        <div class="wa-modal-actions">
+          <button class="wa-modal-cancel" id="waModalCancel" type="button">Cancel</button>
+          <button class="wa-modal-verify" id="waModalVerify" type="button">Verify</button>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
