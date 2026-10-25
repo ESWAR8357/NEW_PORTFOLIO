@@ -12,6 +12,7 @@ const challengeOptions = document.getElementById("challengeOptions");
 const challengeFeedback = document.getElementById("challengeFeedback");
 let challengeAnswer = null;
 let challengeStarted = false;
+let challengeWaitingForContent = false;
 
 body.classList.add("opening-active");
 body.classList.remove("portfolio-ready");
@@ -37,6 +38,7 @@ function shuffleItems(items) {
 }
 
 function buildDecryptChallenge() {
+  const copy = window.portfolioContent.opening;
   const first = Math.floor(Math.random() * 7) + 4;
   const second = Math.floor(Math.random() * 6) + 3;
   challengeAnswer = first + second;
@@ -46,8 +48,8 @@ function buildDecryptChallenge() {
     challengeAnswer - Math.floor(Math.random() * 3) - 1,
   ]);
 
-  challengePrompt.textContent = `Decrypt key: ${first} + ${second} = ?`;
-  challengeFeedback.textContent = "Choose the correct key.";
+  challengePrompt.textContent = copy.decryptKey.replace("{first}", first).replace("{second}", second);
+  challengeFeedback.textContent = copy.challengeFeedback;
   challengeOptions.innerHTML = "";
   options.forEach((option) => {
     const button = document.createElement("button");
@@ -56,14 +58,14 @@ function buildDecryptChallenge() {
     button.textContent = String(option).padStart(2, "0");
     button.addEventListener("click", () => {
       if (option === challengeAnswer) {
-        challengeFeedback.textContent = "Key accepted. Unlocking portfolio...";
+        challengeFeedback.textContent = copy.keyAccepted;
         decryptChallenge.classList.remove("is-wrong");
         decryptChallenge.classList.add("is-solved");
         setTimeout(enterPortfolio, 180);
         return;
       }
 
-      challengeFeedback.textContent = "Wrong key. Try another one.";
+      challengeFeedback.textContent = copy.wrongKey;
       decryptChallenge.classList.add("is-wrong");
       button.classList.add("is-wrong");
       setTimeout(() => {
@@ -77,6 +79,15 @@ function buildDecryptChallenge() {
 
 function showDecryptChallenge() {
   if (!opening || opening.classList.contains("is-leaving")) return;
+  if (!window.portfolioContent) {
+    if (challengeWaitingForContent) return;
+    challengeWaitingForContent = true;
+    window.portfolioContentReady?.then((content) => {
+      challengeWaitingForContent = false;
+      if (content) showDecryptChallenge();
+    });
+    return;
+  }
   if (!challengeStarted) {
     buildDecryptChallenge();
     challengeStarted = true;
@@ -493,17 +504,25 @@ console.log(
 );
 
 function launchInspectSurprise() {
-  if (document.querySelector(".inspect-surprise")) return "The secret is already awake ✨";
+  const copy = window.portfolioContent.easterEgg;
+  if (document.querySelector(".inspect-surprise")) return copy.alreadyAwake;
 
   const surprise = document.createElement("div");
   surprise.className = "inspect-surprise";
   surprise.setAttribute("aria-hidden", "true");
-  surprise.innerHTML =
-    '<div class="inspect-surprise-message">' +
-      '<small>Secret layer unlocked</small>' +
-      '<strong>Curiosity<br>looks good<br>on you.</strong>' +
-      '<em>You inspect interfaces. I build them. We would probably get along.</em>' +
-    '</div>';
+  const message = document.createElement("div");
+  message.className = "inspect-surprise-message";
+  const title = document.createElement("small");
+  title.textContent = copy.secretTitle;
+  const headline = document.createElement("strong");
+  copy.secretHeadline.forEach((line, index) => {
+    if (index) headline.append(document.createElement("br"));
+    headline.append(document.createTextNode(line));
+  });
+  const description = document.createElement("em");
+  description.textContent = copy.secretMessage;
+  message.append(title, headline, description);
+  surprise.append(message);
 
   for (let index = 0; index < 26; index += 1) {
     const piece = document.createElement("i");
@@ -517,22 +536,30 @@ function launchInspectSurprise() {
 
   document.body.appendChild(surprise);
   setTimeout(() => surprise.remove(), 3300);
-  return "✨ Secret unlocked on the page.";
+  return copy.secretReturn;
 }
 
 
 function launchMatrixSurprise() {
-  if (document.querySelector(".inspect-matrix")) return "Matrix mode is already running.";
+  const copy = window.portfolioContent.easterEgg;
+  if (document.querySelector(".inspect-matrix")) return copy.matrixAlreadyRunning;
 
   const matrix = document.createElement("div");
   matrix.className = "inspect-matrix";
   matrix.setAttribute("aria-hidden", "true");
-  matrix.innerHTML =
-    '<div class="inspect-matrix-title">' +
-      '<small>Developer access granted</small>' +
-      '<strong>YOU SEE<br>THE CODE.</strong>' +
-      '<em>The best interfaces reward the people curious enough to look closer.</em>' +
-    '</div>';
+  const title = document.createElement("div");
+  title.className = "inspect-matrix-title";
+  const eyebrow = document.createElement("small");
+  eyebrow.textContent = copy.matrixTitle;
+  const headline = document.createElement("strong");
+  copy.matrixHeadline.forEach((line, index) => {
+    if (index) headline.append(document.createElement("br"));
+    headline.append(document.createTextNode(line));
+  });
+  const description = document.createElement("em");
+  description.textContent = copy.matrixMessage;
+  title.append(eyebrow, headline, description);
+  matrix.append(title);
 
   const symbols = "01{}[]&lt;/&gt;JSREACTNODEMERN";
   for (let column = 0; column < 28; column += 1) {
@@ -551,7 +578,7 @@ function launchMatrixSurprise() {
 
   document.body.appendChild(matrix);
   setTimeout(() => matrix.remove(), 4300);
-  return "Green-code mode activated.";
+  return copy.matrixReturn;
 }
 Object.defineProperty(window, "portfolio", {
   configurable: false,
@@ -652,7 +679,10 @@ function setThemePanelOpen(open) {
   if (!themePanel || !themeLauncher) return;
   themePanel.classList.toggle("is-open", open);
   themeLauncher.setAttribute("aria-expanded", String(open));
-  themeLauncher.setAttribute("aria-label", open ? "Close appearance themes" : "Open appearance themes");
+  const appearanceCopy = window.portfolioContent?.appearance;
+  if (appearanceCopy) {
+    themeLauncher.setAttribute("aria-label", open ? appearanceCopy.close : appearanceCopy.open);
+  }
 }
 
 themeLauncher?.addEventListener("click", (event) => {
@@ -702,6 +732,7 @@ document.addEventListener("keydown", (event) => {
   }
 
   function unlockWhatsApp() {
+    var copy = window.portfolioContent.contact.cards[6];
     overlay.hidden = true;
 
     // Swap icon to WhatsApp
@@ -710,7 +741,7 @@ document.addEventListener("keydown", (event) => {
 
     // Update label
     var smallEl = whatsappCard.querySelector("small");
-    if (smallEl) smallEl.textContent = "Chat";
+    if (smallEl) smallEl.textContent = copy.chat;
 
     // Hide description and unlock button
     var desc = whatsappCard.querySelector(".whatsapp-desc");
@@ -720,7 +751,7 @@ document.addEventListener("keydown", (event) => {
     // Add "Chat on WhatsApp" sub-label
     var subLabel = document.createElement("p");
     subLabel.className = "wa-unlocked-label";
-    subLabel.textContent = "Chat on WhatsApp";
+    subLabel.textContent = copy.chatOnWhatsApp;
     var divEl = whatsappCard.querySelector("div");
     if (divEl) divEl.appendChild(subLabel);
 
@@ -735,7 +766,7 @@ document.addEventListener("keydown", (event) => {
     whatsappCard.classList.add("is-unlocked");
     whatsappCard.setAttribute("role", "link");
     whatsappCard.setAttribute("tabindex", "0");
-    whatsappCard.setAttribute("aria-label", "Chat on WhatsApp");
+    whatsappCard.setAttribute("aria-label", copy.chatOnWhatsApp);
 
     function goToWhatsApp() {
       window.open(WA_URL, "_blank", "noopener,noreferrer");

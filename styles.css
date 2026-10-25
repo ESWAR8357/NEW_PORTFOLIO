@@ -1475,6 +1475,10 @@ h1 {
   margin-bottom: 32px;
 }
 
+.projects-section .section-head {
+  margin-bottom: 20px;
+}
+
 .education-section {
   min-height: auto;
 }

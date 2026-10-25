@@ -1,0 +1,377 @@
+{
+  "meta": {
+    "title": "Tholeti Durgeswara Rao | Full Stack Dev",
+    "description": "Portfolio of Tholeti Durgeswara Rao, a web developer building clean frontend and MERN applications."
+  },
+  "opening": {
+    "ariaLabel": "Portfolio introduction",
+    "index": "Portfolio / 2026",
+    "pretitle": "Developer portfolio",
+    "label": "Portfolio / 2026",
+    "firstName": "Tholeti",
+    "lastName": "Eswar",
+    "fullName": "Tholeti Durgeswara Rao",
+    "role": "Full Stack Developer",
+    "description": "I build thoughtful digital experiences with clean interfaces, practical code, and a sharp eye for the details that make products feel effortless.",
+    "enterLabel": "Enter portfolio",
+    "enter": "decrypt portfolio",
+    "challengeEyebrow": "Random decrypt challenge",
+    "challengePrompt": "Solve the key to enter",
+    "challengeOptions": "Decrypt answer options",
+    "challengeFeedback": "Choose the correct key.",
+    "decrypting": "decrypting access",
+    "decryptKey": "Decrypt key: {first} + {second} = ?",
+    "keyAccepted": "Key accepted. Unlocking portfolio...",
+    "wrongKey": "Wrong key. Try another one."
+  },
+  "navigation": {
+    "primary": "Primary navigation",
+    "main": "Main navigation",
+    "mobile": "Mobile navigation",
+    "brandLabel": "Tholeti Durgeswara Rao | Full Stack Developer",
+    "brandMark": "TE",
+    "brandName": "Tholeti Durgeswara Rao",
+    "brandRole": "| Full Stack Developer",
+    "themeToggle": "Toggle theme",
+    "menuToggle": "Toggle menu",
+    "items": [
+      { "number": "01", "label": "Home", "section": "home" },
+      { "number": "02", "label": "Education", "section": "education" },
+      { "number": "03", "label": "Experience", "section": "experience" },
+      { "number": "04", "label": "Work", "section": "work" },
+      { "number": "05", "label": "Certificates", "section": "certificates" },
+      { "number": "06", "label": "Tools", "section": "tools" },
+      { "number": "07", "label": "Contact", "section": "contact" }
+    ]
+  },
+  "appearance": {
+    "ariaLabel": "Appearance preferences",
+    "open": "Open appearance themes",
+    "close": "Close appearance themes",
+    "title": "Appearance",
+    "accent": "Accent gradient",
+    "gradientThemes": "Gradient themes",
+    "background": "Background",
+    "backgroundTheme": "Background theme",
+    "swatches": ["Violet gradient", "Teal gradient", "Sunset gradient", "Emerald gradient", "Rose gradient", "Ocean gradient"],
+    "modes": [
+      { "label": "Particles", "ariaLabel": "Particle background" },
+      { "label": "Silk", "ariaLabel": "Silk background" },
+      { "label": "Light rays", "ariaLabel": "Light rays background" },
+      { "label": "Minimal", "ariaLabel": "Minimal background" }
+    ]
+  },
+  "profile": {
+    "ariaLabel": "Profile",
+    "index": "Profile / 01",
+    "availability": "Available",
+    "imageAlt": "Tholeti Durgeswara Rao",
+    "role": "Full Stack Developer",
+    "name": "Tholeti Durgeswara Rao",
+    "intro": "I build responsive web experiences and MERN applications with practical UI, clean structure, and a focus on real user flows.",
+    "socialLinks": "Social links",
+    "social": ["LinkedIn", "GitHub", "Portfolio", "Instagram", "Telegram", "Resume"],
+    "statusTitle": "Current status",
+    "status": "Open to internships, web projects, and collaborative builds.",
+    "inspectLabel": "Developer tools easter egg hint",
+    "inspectTeaser": "Psst... curious?",
+    "inspectReveal": "Open Console with F12 and follow the clue."
+  },
+  "hero": {
+    "kicker": "Hello, I am",
+    "name": "Tholeti Durgeswara Rao",
+    "description": "A developer shaping portfolio sites, placement systems, and frontend products that feel fast, readable, and easy to use.",
+    "viewWork": "View Work",
+    "resume": "Resume",
+    "contact": "Contact Me"
+  },
+  "education": {
+    "kicker": "Academic path",
+    "title": "Education",
+    "items": [
+      {
+        "marker": "01",
+        "period": "2022 - 2026",
+        "degree": "Bachelor of Technology in Computer Science Engineering",
+        "school": "Bonam Venkata Chalamayya Engineering College, Odalarevu",
+        "scoreLabel": "CGPA",
+        "scoreTeaser": "View",
+        "score": "8.08",
+        "scoreAriaLabel": "View B.Tech CGPA 8.08"
+      },
+      {
+        "marker": "02",
+        "period": "2021 - 2022",
+        "degree": "Intermediate",
+        "school": "SASI Junior College, Palakollu",
+        "scoreLabel": "Percent",
+        "scoreTeaser": "View",
+        "score": "78%",
+        "scoreAriaLabel": "View Intermediate percentage 78%"
+      },
+      {
+        "marker": "03",
+        "period": "2019 - 2020",
+        "degree": "Secondary Education",
+        "school": "ZPHS School, Battelanka",
+        "scoreLabel": "CGPA",
+        "scoreTeaser": "View",
+        "score": "9.7",
+        "scoreAriaLabel": "View Secondary Education CGPA 9.7"
+      }
+    ]
+  },
+  "experience": {
+    "kicker": "Professional journey",
+    "title": "Experience",
+    "viewCertificate": "View Certificate",
+    "items": [
+      {
+        "marker": "01",
+        "period": "Certificate date: 24 April 2026",
+        "title": "Full Stack Java Development",
+        "organization": "Talent Shine",
+        "description": "Completed Full Stack Java Development training at Talent Shine, building a foundation in Java-based application development.",
+        "imageAlt": "Talent Shine Full Stack Java Development certificate",
+        "certificateLabel": "View Talent Shine Full Stack Java Development certificate",
+        "pdf": "assets/certificates/FULL_STACK_JAVA_Development_Talent_shine.pdf",
+        "image": "assets/certificates/FULL_STACK_JAVA_Development_Talent_shine.webp"
+      },
+      {
+        "marker": "02",
+        "period": "Issued October 10, 2025",
+        "title": "Virtual Internship Program",
+        "organization": "ServiceNow — SmartBridge & AICTE",
+        "description": "Completed the ServiceNow Virtual Internship with SmartBridge and AICTE, covering administration, flow automation, ATF, reporting, and CSA preparation.",
+        "imageAlt": "ServiceNow Virtual Internship Program Certificate",
+        "certificateLabel": "View ServiceNow Virtual Internship Program certificate",
+        "certificateId": "SNU2006613",
+        "modules": "ServiceNow Administration Fundamentals, Introduction to Flows, Automated Test Framework (ATF), Reports, and CSA Exam Preparation",
+        "microCertifications": "Welcome to ServiceNow and Introduction to Agentic AI",
+        "pdf": "assets/Experience/Internship Certificate - ServiceNow.pdf",
+        "image": "assets/Experience/Internship Certificate - ServiceNow.webp"
+      },
+      {
+        "marker": "03",
+        "period": "20 May - 20 July 2024",
+        "title": "Web Development Intern",
+        "organization": "Next24tech",
+        "description": "Completed a two-month AICTE internship in Front-End Web Development at Next24tech.",
+        "imageAlt": "Next24tech Front-End Web Development internship certificate",
+        "certificateLabel": "View Next24tech internship certificate",
+        "certificateIssued": "21 July 2024",
+        "pdf": "assets/Experience/Internship Certificate Next24tech.jpg",
+        "image": "assets/Experience/Internship Certificate Next24tech.webp"
+      },
+      {
+        "marker": "04",
+        "period": "8 Weeks — 2024",
+        "title": "Full Stack Development Intern",
+        "organization": "IIDT & APSCHE — Blackbuck Engineers",
+        "description": "Completed an 8-week Full Stack Development internship with IIDT, APSCHE, and Blackbuck Engineers, earning 75/100 and an Excellent rating.",
+        "imageAlt": "IIDT Full Stack Development Internship Merit Certificate",
+        "certificateLabel": "View IIDT Full Stack Development internship merit certificate",
+        "certificateId": "BBAPSCHEIIDT2024STM102542",
+        "pdf": "assets/Experience/Internship Merit certificate IIDT.pdf",
+        "image": "assets/Experience/Internship Merit certificate IIDT.webp"
+      }
+    ]
+  },
+  "projects": {
+    "kicker": "Selected work",
+    "title": "Projects",
+    "live": "Live",
+    "github": "GitHub",
+    "items": [
+      {
+        "type": "MERN",
+        "title": "Placement_Portal",
+        "description": "A full-stack placement management platform designed to connect students, recruiters, and administrators through a structured hiring workflow. It focuses on posting opportunities, tracking applications, and keeping placement data organized in one place.",
+        "liveUrl": "https://placement-portal-eswar.vercel.app/",
+        "githubUrl": "https://github.com/ESWAR8357/placement_portal_eswar"
+      },
+      {
+        "type": "REACT",
+        "title": "15 Projects using React",
+        "description": "15 Projects using REACT useful for improve knowledge on REACT.",
+        "liveUrl": "https://eswarprojects15.netlify.app/",
+        "githubUrl": "https://github.com/ESWAR8357/Projects_15"
+      },
+      {
+        "type": "Frontend",
+        "title": "E-Learn Platform",
+        "description": "A full-stack placement management platform designed to Learn different Technologies",
+        "liveUrl": "https://eswarlearn.netlify.app/",
+        "githubUrl": "https://github.com/ESWAR8357/eswarlearn"
+      },
+      {
+        "type": "Frontend Tech",
+        "title": "Portfolio",
+        "description": "A personal portfolio experience built to present projects, developer identity, and contact channels with a clean visual style and responsive frontend interactions.",
+        "liveUrl": "https://tholeti-eswar.vercel.app/",
+        "githubUrl": "https://github.com/ESWAR8357/NEW_PORTFOLIO"
+      }
+    ]
+  },
+  "certificates": {
+    "kicker": "Professional credentials",
+    "title": "Certificates",
+    "description": "Industry-recognized certifications and internships demonstrating practical skills across software development and enterprise platforms.",
+    "view": "View certificate",
+    "openPdf": "Open PDF",
+    "items": [
+      {
+        "accent": "#ff9900",
+        "pdf": "assets/certificates/AWS Cloud Practitioner.pdf",
+        "image": "assets/certificates/AWS Cloud Practitioner.webp",
+        "ariaLabel": "Open AWS Cloud Practitioner Essentials certificate",
+        "imageAlt": "AWS Cloud Practitioner Essentials certificate awarded to Tholeti Durgeswara Rao",
+        "brand": "Amazon Web Services",
+        "code": "AWS",
+        "title": "Cloud Practitioner Essentials",
+        "description": "Completed June 24, 2026."
+      },
+      {
+        "pdf": "assets/certificates/servicenow-cad.pdf",
+        "image": "assets/certificates/servicenow-cad.webp",
+        "ariaLabel": "Open ServiceNow Certified Application Developer certificate",
+        "imageAlt": "ServiceNow Certified Application Developer certificate awarded to Tholeti Durgeswara Rao",
+        "brand": "ServiceNow",
+        "code": "CAD",
+        "title": "Certified Application Developer",
+        "description": "Issued January 27, 2026."
+      },
+      {
+        "pdf": "assets/certificates/servicenow-csa.pdf",
+        "image": "assets/certificates/servicenow-csa.webp",
+        "ariaLabel": "Open ServiceNow Certified System Administrator certificate",
+        "imageAlt": "ServiceNow Certified System Administrator certificate awarded to Tholeti Durgeswara Rao",
+        "brand": "ServiceNow",
+        "code": "CSA",
+        "title": "Certified System Administrator",
+        "description": "Issued January 27, 2026 - Credential 27312714."
+      },
+      {
+        "accent": "#5dff63",
+        "pdf": "assets/certificates/servicenow-virtual-internship.pdf",
+        "image": "assets/certificates/servicenow-virtual-internship.webp",
+        "ariaLabel": "Open ServiceNow Virtual Internship Program certificate",
+        "imageAlt": "ServiceNow University Virtual Internship Program certificate awarded to Tholeti Durgeswara Rao",
+        "brand": "ServiceNow University",
+        "code": "VIP",
+        "title": "Virtual Internship Program",
+        "description": "Issued October 10, 2025 - Credential SNU2006613."
+      },
+      {
+        "accent": "#18a999",
+        "pdf": "assets/certificates/iidt-full-stack.pdf",
+        "image": "assets/certificates/iidt-full-stack.webp",
+        "ariaLabel": "Open IIDT Full Stack Development internship certificate",
+        "imageAlt": "IIDT and APSCHE Full Stack Development internship certificate awarded to Tholeti Durgeswara Rao",
+        "brand": "IIDT - APSCHE",
+        "code": "FSD",
+        "title": "Full Stack Development Internship",
+        "description": "Completed in 2024 - 8 weeks - Score 75/100 - Performance: Excellent."
+      },
+      {
+        "accent": "#b42318",
+        "pdf": "assets/certificates/nptel-programming-c.pdf",
+        "image": "assets/certificates/nptel-programming-c.webp",
+        "ariaLabel": "Open NPTEL Problem Solving through Programming in C certificate",
+        "imageAlt": "NPTEL Elite certificate for Problem Solving through Programming in C awarded to Tholeti Durgeswara Rao",
+        "brand": "NPTEL - IIT Kharagpur",
+        "code": "C",
+        "title": "Problem Solving through Programming in C",
+        "description": "Jan-Apr 2023 - 12 weeks - Score 60%."
+      },
+      {
+        "accent": "#61dafb",
+        "pdf": "assets/certificates/REACTJS_GFG.pdf",
+        "image": "assets/certificates/REACTJS_GFG.webp",
+        "ariaLabel": "Open ReactJS GeeksforGeeks certificate",
+        "imageAlt": "ReactJS course completion certificate by GeeksforGeeks awarded to Tholeti Durgeswara Rao",
+        "brand": "GeeksforGeeks",
+        "code": "GFG",
+        "title": "ReactJS",
+        "description": "React JS Development course completion; date not listed on the certificate."
+      }
+    ]
+  },
+  "skills": {
+    "kicker": "Stack",
+    "title": "Technical Skills",
+    "description": "Tools and technologies I use to build modern web experiences.",
+    "scrollCue": "Scroll to arrange",
+    "items": [
+      { "short": "JAVA", "name": "Java", "url": "https://dev.java/learn/", "color": "#f89820", "icon": "java" },
+      { "short": "LINUX", "name": "Linux", "url": "https://www.kernel.org/", "color": "#fcc624", "icon": "linux" },
+      { "short": "HTML", "name": "HTML5", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML", "color": "#e34f26", "icon": "html" },
+      { "short": "CSS", "name": "CSS3", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS", "color": "#1572b6", "icon": "css" },
+      { "short": "JS", "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "color": "#f7df1e", "icon": "js" },
+      { "short": "RE", "name": "React", "url": "https://react.dev/", "color": "#61dafb", "icon": "react" },
+      { "short": "NO", "name": "Node.js", "url": "https://nodejs.org/", "color": "#5fa04e", "icon": "nodejs" },
+      { "short": "EX", "name": "Express", "url": "https://expressjs.com/", "color": "#eeeeee", "icon": "express&theme=dark" },
+      { "short": "DB", "name": "MongoDB", "url": "https://www.mongodb.com/docs/", "color": "#47a248", "icon": "mongodb" },
+      { "short": "GIT", "name": "Git", "url": "https://git-scm.com/doc", "color": "#f05032", "icon": "git" },
+      { "short": "GH", "name": "GitHub", "url": "https://github.com/", "color": "#f5f5f5", "icon": "github&theme=dark" },
+      { "short": "V", "name": "Vercel", "url": "https://vercel.com/docs", "color": "#ffffff", "icon": "vercel&theme=dark" },
+      { "short": "NE", "name": "Netlify", "url": "https://docs.netlify.com/", "color": "#00c7b7", "icon": "netlify" },
+      { "short": "NPM", "name": "npm", "url": "https://docs.npmjs.com/", "color": "#cb3837", "icon": "npm" },
+      { "short": "VS", "name": "VS Code", "url": "https://code.visualstudio.com/docs", "color": "#007acc", "icon": "vscode" },
+      { "short": "API", "name": "Postman", "url": "https://learning.postman.com/docs/", "color": "#ff6c37", "icon": "postman" }
+    ]
+  },
+  "contact": {
+    "kicker": "Connect",
+    "title": "Let's build something thoughtful.",
+    "description": "Have a project, opportunity, or idea worth exploring? Pick the channel that works for you and let's start a conversation.",
+    "startConversation": "Start a conversation",
+    "viewResume": "View resume",
+    "backgroundWord": "CONNECT",
+    "cards": [
+      { "index": "01", "category": "Professional", "name": "LinkedIn" },
+      { "index": "02", "category": "Code & projects", "name": "GitHub" },
+      { "index": "03", "category": "Previous work", "name": "Portfolio" },
+      { "index": "04", "category": "Social", "name": "Instagram" },
+      { "index": "05", "category": "Discord", "name": "tdreswar3967", "status": "Available" },
+      { "index": "06", "category": "Messaging", "name": "Telegram" },
+      { "index": "07", "category": "Protected", "name": "WhatsApp", "description": "To reduce spam messages, verify Code to unlock my WhatsApp contact.", "unlockLabel": "Unlock WhatsApp", "unlockAriaLabel": "Unlock WhatsApp contact", "chat": "Chat", "chatOnWhatsApp": "Chat on WhatsApp" },
+      { "index": "08", "category": "Experience", "name": "Resume" }
+    ]
+  },
+  "footer": {
+    "builtFor": "Built for",
+    "withTech": "with frontend tech.",
+    "inspectLabel": "Developer tools easter egg hint",
+    "inspectTeaser": "Psst... curious?",
+    "inspectReveal": "Open Console with F12 and follow the clue."
+  },
+  "modal": {
+    "title": "Verify to Continue",
+    "description": "This verification helps reduce spam and automated messages. Enter the verification code below to unlock my WhatsApp contact.",
+    "label": "Verification Code",
+    "placeholder": "Enter verification code",
+    "error": "Incorrect verification code.",
+    "cancel": "Cancel",
+    "verify": "Verify"
+  },
+  "interface": {
+    "toggleThemes": "Open appearance themes",
+    "backToTop": "Back to top",
+    "topTooltip": "Top",
+    "pdfOpen": "Open PDF",
+    "certificateView": "View certificate"
+  },
+  "easterEgg": {
+    "alreadyAwake": "The secret is already awake ✨",
+    "secretTitle": "Secret layer unlocked",
+    "secretHeadline": ["Curiosity", "looks good", "on you."],
+    "secretMessage": "You inspect interfaces. I build them. We would probably get along.",
+    "secretReturn": "✨ Secret unlocked on the page.",
+    "matrixAlreadyRunning": "Matrix mode is already running.",
+    "matrixTitle": "Developer access granted",
+    "matrixHeadline": ["YOU SEE", "THE CODE."],
+    "matrixMessage": "The best interfaces reward the people curious enough to look closer.",
+    "matrixReturn": "Green-code mode activated."
+  }
+}
