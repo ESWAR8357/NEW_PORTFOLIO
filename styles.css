@@ -678,6 +678,100 @@ body.opening-active {
   }
 }
 
+/* Portfolio assistant */
+.portfolio-chat {
+  position: fixed;
+  right: clamp(16px, 3vw, 32px);
+  bottom: clamp(16px, 3vw, 30px);
+  z-index: 120;
+  font-family: "Geist Mono", Consolas, monospace;
+}
+
+.chat-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 19px;
+  border: 1px solid color-mix(in srgb, var(--primary) 55%, transparent);
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  box-shadow: 0 12px 35px color-mix(in srgb, var(--primary) 30%, transparent);
+  font: 600 13px/1 "Geist Mono", Consolas, monospace;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.chat-launcher:hover { transform: translateY(-3px); box-shadow: 0 16px 40px color-mix(in srgb, var(--primary) 42%, transparent); }
+.chat-launcher-icon { font-size: 20px; }
+
+.chat-panel {
+  position: absolute;
+  right: 0;
+  bottom: 68px;
+  display: flex;
+  flex-direction: column;
+  width: min(370px, calc(100vw - 32px));
+  height: min(520px, calc(100vh - 120px));
+  height: min(520px, calc(100dvh - 120px));
+  min-height: min(330px, calc(100vh - 120px));
+  min-height: min(330px, calc(100dvh - 120px));
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--soft));
+  border-radius: 20px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .32);
+  backdrop-filter: blur(22px);
+  animation: chat-appear .2s ease-out;
+}
+
+.chat-panel[hidden] { display: none; }
+@keyframes chat-appear { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+.chat-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid var(--soft); }
+.chat-header > div { display: flex; align-items: center; gap: 11px; }
+.chat-status-dot { width: 9px; height: 9px; border-radius: 50%; background: #34d399; box-shadow: 0 0 12px #34d399; }
+.chat-header h2 { margin: 0; font-size: 14px; }
+.chat-header p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+.chat-close { width: 32px; height: 32px; border: 0; border-radius: 50%; color: var(--text); background: var(--soft); font-size: 22px; cursor: pointer; }
+.chat-messages { display: flex; flex: 1; flex-direction: column; gap: 10px; overflow-y: auto; padding: 16px; }
+.chat-message { max-width: 88%; padding: 11px 13px; border: 1px solid var(--soft); border-radius: 14px 14px 14px 4px; background: var(--panel); font: 400 11px/1.65 "Geist Mono", Consolas, monospace; overflow-wrap: anywhere; }
+.chat-message.user { align-self: flex-end; border-color: color-mix(in srgb, var(--primary) 40%, transparent); border-radius: 14px 14px 4px 14px; background: color-mix(in srgb, var(--primary) 16%, var(--panel)); }
+.chat-message a { display: inline-block; margin-top: 8px; color: var(--primary); font-weight: 600; }
+.chat-suggestions { display: flex; gap: 7px; overflow-x: auto; padding: 0 14px 12px; scrollbar-width: thin; }
+.chat-suggestions button { flex: 0 0 auto; padding: 7px 9px; border: 1px solid var(--soft); border-radius: 999px; color: var(--text); background: var(--panel); font: 400 9px/1.4 "Geist Mono", Consolas, monospace; cursor: pointer; }
+.chat-suggestions button:hover { border-color: var(--primary); }
+.chat-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--soft); }
+.chat-form input { min-width: 0; flex: 1; padding: 11px 13px; border: 1px solid var(--soft); border-radius: 12px; outline: none; color: var(--text); background: var(--panel); font: 400 11px/1.4 "Geist Mono", Consolas, monospace; }
+.chat-form input:focus { border-color: var(--primary); }
+.chat-form button { width: 40px; border: 0; border-radius: 12px; color: #fff; background: linear-gradient(135deg, var(--primary), var(--secondary)); font-size: 20px; cursor: pointer; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 520px) {
+  .portfolio-chat { right: 14px; bottom: 14px; }
+  .chat-panel {
+    bottom: 64px;
+    height: min(500px, calc(100vh - 98px));
+    height: min(500px, calc(100dvh - 98px));
+    min-height: min(300px, calc(100vh - 98px));
+    min-height: min(300px, calc(100dvh - 98px));
+  }
+  .chat-launcher { min-height: 48px; padding: 0 15px; }
+}
+
+@media (max-height: 430px) {
+  .chat-panel { bottom: 60px; }
+  .chat-header { padding: 10px 14px; }
+  .chat-messages { padding: 10px; }
+  .chat-suggestions { padding-bottom: 8px; }
+  .chat-form { padding: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-launcher, .chat-panel { animation: none; transition: none; }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -5925,9 +6019,105 @@ body.dark.bg-mode-particles .cursor-field {
   }
 }
 
+/* Keep Connect usable when the desktop profile panel narrows the content column. */
+@media (min-width: 761px) and (max-width: 1199px) {
+  .contact-cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  }
+
+  .contact-showcase {
+    padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-sticky {
+    padding-bottom: 150px;
+  }
+}
+
+/* Show the full desktop navigation at Edge's split layout widths. */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .top-nav .nav-actions {
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .top-nav .nav-links {
+    flex: 1;
+    justify-content: flex-end;
+    max-width: none;
+    gap: clamp(2px, .45vw, 7px);
+    overflow: visible;
+  }
+
+  .top-nav .nav-pill {
+    margin: 2px;
+    padding: 8px clamp(2px, .35vw, 6px);
+    font-size: clamp(10px, .95vw, 13px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .experience-card:hover .experience-content::before,
   .experience-card:focus-within .experience-content::before {
     animation: none;
   }
+}
+
+/* Keep the two floating controls separate at desktop widths. */
+@media (min-width: 1025px) {
+  .back-top {
+    right: clamp(16px, 3vw, 32px);
+    bottom: 96px;
+  }
+}
+
+.back-top-emoji {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent);
+  border-radius: 50%;
+  background: var(--bg);
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, .22);
+}
+
+body:has(.chat-panel:not([hidden])) .back-top {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chat-footnote {
+  margin: -3px 13px 10px;
+  color: color-mix(in srgb, var(--text) 46%, transparent);
+  font-size: 9px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.chat-message { white-space: pre-wrap; }
+.chat-form button:disabled,
+.chat-suggestions button:disabled { cursor: wait; opacity: .6; }
+
+.chat-message.loading {
+  color: color-mix(in srgb, var(--text) 60%, transparent);
+  animation: assistant-thinking 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes assistant-thinking {
+  from { opacity: .55; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-message.loading { animation: none; }
 }
