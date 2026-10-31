@@ -828,3 +828,119 @@ document.addEventListener("keydown", (event) => {
     }
   });
 })();
+
+// AI portfolio assistant: calls the server-side Ollama endpoint and renders only safe text/section links.
+(() => {
+  const panel = document.getElementById("chatPanel");
+  const launcher = document.getElementById("chatLauncher");
+  const closeButton = document.getElementById("chatClose");
+  const messages = document.getElementById("chatMessages");
+  const form = document.getElementById("chatForm");
+  const input = document.getElementById("chatInput");
+  const suggestions = document.getElementById("chatSuggestions");
+  if (!panel || !launcher || !messages || !form || !input) return;
+  const sendButton = form.querySelector("button[type='submit']");
+  const conversation = [];
+  let isBusy = false;
+
+  function appendAnswerText(container, text) {
+    const sectionLink = /\[([^\]]+)\]\(#(home|education|experience|work|certificates|tools|contact)\)/g;
+    let lastIndex = 0;
+    for (const match of text.matchAll(sectionLink)) {
+      container.append(document.createTextNode(text.slice(lastIndex, match.index)));
+      const anchor = document.createElement("a");
+      anchor.href = `#${match[2]}`;
+      anchor.textContent = match[1];
+      container.append(anchor);
+      lastIndex = match.index + match[0].length;
+    }
+    container.append(document.createTextNode(text.slice(lastIndex)));
+  }
+
+  function addMessage(text, role, options = {}) {
+    const message = document.createElement("div");
+    message.className = `chat-message ${role}${options.loading ? " loading" : ""}`;
+    if (role === "assistant") appendAnswerText(message, text);
+    else message.textContent = text;
+    messages.append(message);
+    messages.scrollTop = messages.scrollHeight;
+    return message;
+  }
+
+  function setBusy(busy) {
+    isBusy = busy;
+    input.disabled = busy;
+    if (sendButton) sendButton.disabled = busy;
+    suggestions?.querySelectorAll("button").forEach((button) => { button.disabled = busy; });
+  }
+
+  async function submitQuestion(question) {
+    const clean = question.trim();
+    if (!clean || isBusy) return;
+    addMessage(clean, "user");
+    conversation.push({ role: "user", content: clean });
+    const pending = addMessage("Thinking...", "assistant", { loading: true });
+    input.value = "";
+    setBusy(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: conversation.slice(-8) }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        if (result.code === "ai_not_configured") {
+          throw new Error("AI_SETUP_REQUIRED");
+        }
+        throw new Error(result.error || "The AI assistant is unavailable right now.");
+      }
+
+      const answer = typeof result.answer === "string" && result.answer.trim()
+        ? result.answer.trim()
+        : "I couldn't find an answer in the portfolio details. Try asking about a project, skill, or experience.";
+      conversation.push({ role: "assistant", content: answer });
+      pending.remove();
+      addMessage(answer, "assistant");
+    } catch (error) {
+      pending.remove();
+      const text = error.message === "AI_SETUP_REQUIRED"
+        ? "The AI assistant is not configured yet. Please try again later."
+        : error.message || "I couldn't reach the AI assistant. Please try again or use the Contact section.";
+      addMessage(text, "assistant");
+    } finally {
+      setBusy(false);
+      if (!panel.hidden) input.focus();
+    }
+  }
+
+  function openChat() {
+    panel.hidden = false;
+    launcher.setAttribute("aria-expanded", "true");
+    if (!messages.childElementCount) addMessage("Hi! I can answer questions about Eswar’s projects, skills, education, and experience. I’ll point you to the relevant section when I can.", "assistant");
+    input.focus();
+  }
+
+  function closeChat() {
+    panel.hidden = true;
+    launcher.setAttribute("aria-expanded", "false");
+    launcher.focus();
+  }
+
+  launcher.addEventListener("click", () => panel.hidden ? openChat() : closeChat());
+  closeButton?.addEventListener("click", closeChat);
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    void submitQuestion(input.value);
+  });
+  suggestions?.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    void submitQuestion(button.textContent);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) closeChat();
+  });
+})();
+
