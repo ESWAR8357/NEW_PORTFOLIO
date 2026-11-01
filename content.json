@@ -184,6 +184,13 @@
     "github": "GitHub",
     "items": [
       {
+        "type": "AI · REACT · OLLAMA",
+        "title": "React Studio",
+        "description": "An AI-powered React website builder that uses Ollama to generate React source files, preview the result, and download a ready-to-run Vite project.",
+        "liveUrl": "https://react-website-using-ollama.vercel.app/",
+        "githubUrl": "https://github.com/ESWAR8357/React_Website"
+      },
+      {
         "type": "MERN",
         "title": "Placement_Portal",
         "description": "A full-stack placement management platform designed to connect students, recruiters, and administrators through a structured hiring workflow. It focuses on posting opportunities, tracking applications, and keeping placement data organized in one place.",
