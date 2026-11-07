@@ -217,6 +217,13 @@
         "description": "A personal portfolio experience built to present projects, developer identity, and contact channels with a clean visual style and responsive frontend interactions.",
         "liveUrl": "https://tholeti-eswar.vercel.app/",
         "githubUrl": "https://github.com/ESWAR8357/NEW_PORTFOLIO"
+      },
+      {
+        "type": "REACT · THREE.JS",
+        "title": "Balakrishna Runner – Hyderabad Rush",
+        "description": "A high-octane 3D endless runner set across Hyderabad, featuring Balakrishna dashing through the city’s iconic streets, flyovers, and landmarks.",
+        "liveUrl": "https://runner-in-hyd.vercel.app/",
+        "githubUrl": "https://github.com/ESWAR8357/Runner_Game_in_HYD"
       }
     ]
   },
